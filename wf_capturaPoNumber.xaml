@@ -1,0 +1,214 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="wf_capturaPoNumber" sap:VirtualizedContainerService.HintSize="909,1190" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="33">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="53">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>WindowsFormsIntegration</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="670,1125" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Automation Anywhere Labs - Quarter Close Challenge" sap:VirtualizedContainerService.HintSize="628,1037" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="f7ec0cdd-5a6b-4374-aa5c-05487b8666ca" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="594,816" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Int32" Name="var_intContador" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="552,86" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[var_intContador]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">1</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="552,600" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+              <ui:InterruptibleDoWhile.Body>
+                <Sequence DisplayName="Corpo" sap:VirtualizedContainerService.HintSize="516,426" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="var_strCartao" />
+                    <Variable x:TypeArguments="x:String" Name="var_strValor" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="474,338" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                    <TryCatch.Try>
+                      <Sequence sap:VirtualizedContainerService.HintSize="476,855" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NGetText DisplayName="Get Text 'Checking (..2147)'" sap:VirtualizedContainerService.HintSize="434,161" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="f7ec0cdd-5a6b-4374-aa5c-05487b8666ca" TextString="[var_strCartao]" Timeout="5" Version="V3">
+                          <uix:NGetText.Target>
+                            <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/automationanywherelabs-quarterclose.html" DesignTimeRectangle="575, 457, 248, 45" DesignTimeScaleFactor="1.190000057220459" ElementType="InputBox" FriendlyName="'Checking (..2147)'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='PaymentAccount{0}' tag='INPUT' /&gt;&quot;, var_intContador)]" FuzzySelectorArgument="&lt;webctrl id='PaymentAccount1' tag='INPUT' type='text' class='form-control' aaname='' /&gt;" Guid="46c53202-a821-4980-8d2a-8f65e7668f8e" ImageBase64="" InformativeScreenshot="4f1865c9ee63fbac3611a87296b6dc24.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Automation Anywhere Labs - Quarter Close Challenge' /&gt;" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
+                          </uix:NGetText.Target>
+                        </uix:NGetText>
+                        <uix:NGetText DisplayName="Get Text '1645.73'" sap:VirtualizedContainerService.HintSize="434,161" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="f7ec0cdd-5a6b-4374-aa5c-05487b8666ca" TextString="[var_strValor]" Version="V3">
+                          <uix:NGetText.Target>
+                            <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/automationanywherelabs-quarterclose.html" DesignTimeRectangle="1136, 457, 207, 45" DesignTimeScaleFactor="1.190000057220459" ElementType="InputBox" FriendlyName="'1645.73'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='PaymentAmount{0}' tag='INPUT' /&gt;&quot;, var_intContador)]" FuzzySelectorArgument="&lt;webctrl id='PaymentAmount1' tag='INPUT' type='text' class='form-control' aaname='' /&gt;" Guid="d01ffea7-5e71-41ba-921f-0d52c2ee84bc" ImageBase64="" InformativeScreenshot="64e97a376a4f20a88289ab307b7ec12b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Automation Anywhere Labs - Quarter Close Challenge' /&gt;" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
+                          </uix:NGetText.Target>
+                        </uix:NGetText>
+                        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Queue Item" FolderPath="Banco" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="Fila Banco" Reference="[&quot;o valor da compra é &quot; +var_strValor]">
+                          <ui:AddQueueItem.ItemInformation>
+                            <InArgument x:TypeArguments="x:String" x:Key="Cartao">[var_strCartao]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="Valor">[var_strValor]</InArgument>
+                          </ui:AddQueueItem.ItemInformation>
+                          <ui:AddQueueItem.ItemInformationCollection>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+                          </ui:AddQueueItem.ItemInformationCollection>
+                          <ui:AddQueueItem.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:AddQueueItem.TimeoutMS>
+                        </ui:AddQueueItem>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[var_intContador]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[var_intContador+1]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="440,159" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <Assign sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="Assign_3">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[var_intContador]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">100</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
+                </Sequence>
+              </ui:InterruptibleDoWhile.Body>
+              <ui:InterruptibleDoWhile.Condition>
+                <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="var_intContador &lt;&gt; 100" />
+              </ui:InterruptibleDoWhile.Condition>
+            </ui:InterruptibleDoWhile>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="e253dd0c738864cb50a8fe0bb12331a3.jpg" Selector="&lt;html app='chrome.exe' title='Automation Anywhere Labs - Quarter Close Challenge' /&gt;" Url="https://developer.automationanywhere.com/challenges/automationanywherelabs-quarterclose.html" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

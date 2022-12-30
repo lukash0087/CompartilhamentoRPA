@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -6,10 +6,10 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>818.4,454.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1154,2229</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="50">
+    <scg:List x:TypeArguments="x:String" Capacity="78">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -36,10 +36,24 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>System.Windows.Forms</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="55">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -75,16 +89,192 @@
       <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="375.2,389.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1012,2164" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="var_strValor" />
+      <Variable x:TypeArguments="x:String" Name="var_strCartao" />
+      <Variable x:TypeArguments="x:String" Name="var_strLinha" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="333.6,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="950,94" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="950,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_strValor]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Valor").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_strCartao]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Cartao").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_strLinha]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Linha").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Arcadia Financial - Account Overview" sap:VirtualizedContainerService.HintSize="950,643" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="f711cba3-d330-4dff-9d5e-c207e70b71dd" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,425" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[var_strCartao]" sap:VirtualizedContainerService.HintSize="338,53" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+              <Switch.Default>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Deu ruim no teu cu seu otario&quot;]" />
+              </Switch.Default>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick x:Key="Credit Card (..4513)" ClickType="Single" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f711cba3-d330-4dff-9d5e-c207e70b71dd" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/automationanywherelabs-arcadiabankhome.html" DesignTimeRectangle="8, 385, 225, 48" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Credit Card (..4513)'" FullSelectorArgument="&lt;webctrl href='automationanywherelabs-arcadiabank_acct4513.html' parentid='sidenavAccordion' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl href='automationanywherelabs-arcadiabank_acct4513.html' parentid='sidenavAccordion' tag='A' type='' class='nav-link' aaname='                                                                  Credit Card (..4513)                             ' check:innerText='Credit Card (..4513)' /&gt;" Guid="dccf73d6-bf11-44c7-b412-f83199bb5a57" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOUAAAA0CAYAAAB1q/+cAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMXSURBVHhe7dltaltBDIVhryE/uh7vzEvz0lKm5ZSD0Hxce8Ca5j3w4BlJvjGkApPevr5+fSu32w3AhygsJVCEwlICRSgsJVCEwlICRSgsJVCEwlICRSgsJVCEwlICRSgsJVCEwlICRSgsJVCEwlICRSgsJVCEwlICRSgsJVCEwlICRSgsJVCEwlICRSjblvJ+v78tey7wUyjblnJXsmdX4Z/Pz9Wd9Fl/MmXbUj4ejy2yZ4/EZDO7+PP9/IqYbGaX1eevzomS1Tzej0b9mNjz+/9AOXops8+c1XaZPXvWl2wuq+2y8uyVmUiJNb/3eHr9eG+JNb+fTjn26+uV2V1mP3PWb1Zmdpv9zFk/o/foNdZHFJ1jvyebzWqnUo5cyqtzStZXYi/r6zWedfd4z2eyeo8n1r3vPa+36B5n3Kwf+byfs/vMlflsNqudSvnYUj6fz/T9Xuu5MtfS6129t/T6vZqb9V2c9bvife/Fe4vX3KiXUfye9RXvZVZmmtHcqHcSZftSZv/VESlZLXt29O5cVvean53X/TyquVl/xN/rZ3e13ox6kRJrfo/e6Xuyvsz6p1B+xNfXrJ7F+z6f1f08qrlZP4rxus+9Wm9GvSibzWrRaGbUc0qvl9VPo2xfyuwvqlna19dsJnt29O5cry69vtf9PKq5Wd/FWb/72V2tN6OemyV7j4z6o17Um+3VT6N8bClbspns2ZmV2d5Mry69vtf9PKpFr854zc/uar0Z9VasvH80M+pFvdle/TTKkV9fJZv3mp+j2Fu5t/T6vVomm/Oan3Vv6fVd7Clec1nPa37OxP7sHvX6sa54zXtZ/TRKqaWMf5FdERN7fo88K329xrNTsp6LGfV1957OGY/uccbFvt/9nIn9GO9lejMx2Uwz6p1G2baUONfJv/uTP3uksJT448Tf/4mfeURhKfHPSf8GTvqsqxSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEijib76/fwMZ/WeptloJ1gAAAABJRU5ErkJggg==" InformativeScreenshot="bd344be0eca3aabfea7fa3e44f466cbd.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Arcadia Financial - Account Overview' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick x:Key="Checking (..2147)" ClickType="Single" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f711cba3-d330-4dff-9d5e-c207e70b71dd" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/automationanywherelabs-arcadiabankhome.html" DesignTimeRectangle="8, 289, 225, 48" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Checking (..2147)'" FullSelectorArgument="&lt;webctrl href='automationanywherelabs-arcadiabank_acct2147.html' parentid='sidenavAccordion' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl href='automationanywherelabs-arcadiabank_acct2147.html' parentid='sidenavAccordion' tag='A' type='' class='nav-link' aaname='                                                                  Checking (..2147)                             ' check:innerText='Checking (..2147)' /&gt;" Guid="9f43c207-6cf6-460a-a12a-d28fb66638b9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOUAAAA0CAYAAAB1q/+cAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAL6SURBVHhe7dkBahtBDIVhnyH0QLlZjpajpQzlwUNoNLP1utZ2/wcfmZG0W0MQmPTx8fHrR3k8HgDeRGEpgSYUlhJoQmEpgSYUlhJoQmEpgSYUlhJoQmEpgSYUlhJoQmEpgSYUlhJoQmEpgSYUlhJoQmEpgSYUlhJoQmEpgSYUlhJoQmEpgSYUlhJoQjltKT8/P5+WvRe4C+W0pTwr2bv/1tnvi1bvX/UBp5y2lF9fX6fI3l2JiT2/n231/lX/FXb+zZhsRlZ9UbJaFvV9/u6USy9l9pm95udXePX7j9r5PHFG8ZrXR2Ivo2Q9p/jd+3emXPbr687szswzXv3+I575LPFZJetlNKOflWwmq92RcsmlPDrniTPi2e37Oav52e8e7zuP7nHGrfqV6tmqN3jfz5lZf1a/G+VtS/n9/Z0+77WZI3Mjseb3rLa6Z3Vl1td9JNb8ntUUr7mqt6N6ftUb8bv3o6pf9e5COX0ps//qiJSslr07enbO637Oan6O1NPPKNbjPav72c3qQ9VbWT076yux5veo6le9u1Bu8fW1qs+SzUZK1htiL96zup/drD5UvcrOc7OZrJ7VpOoNq/4dKKcvZfYX1Szj62s2k707enbO637OVH319DOK9XjP6n52s/pQ9TJK1ouyuVXivJ7J6rLq34HytqUcyWayd2d2ZmczXvdzpup7z8+zWrxndT+7WX2oepGS9TJnzVa9YdW/A+WSX18lm/ean12sH73P6kfvs3p2H/Gay3pem513HJmfzc7qbmfmf6e0Wsr4F9kdMbHn96ruib1Z389Zzc/Zvap7ZjMu9v0ez1nUj6peNJud1WXVvwvltKXEa61+P6t+Z1f+7GdSWMqL2Pn97Mx0c8XP/CoKS9lQ/F3Ee+XI7Ltd6bP+CwpL2ZQn6+P/o7CUQBMKSwk0obCUQBMKSwk0obCUQBMKSwk0obCUQBMKSwk0obCUQBMKSwk0obCUQBMKSwk0obCUQBMKSwk0obCUQBMKSwk08Sc/P78B1aMQmA14l+8AAAAASUVORK5CYII=" InformativeScreenshot="2fff033d6445097a84b80ddb4200172f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Arcadia Financial - Account Overview' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick x:Key="Checking (..2839)" ClickType="Single" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f711cba3-d330-4dff-9d5e-c207e70b71dd" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/automationanywherelabs-arcadiabankhome.html" DesignTimeRectangle="8, 241, 225, 48" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Checking (..2839)'" FullSelectorArgument="&lt;webctrl parentid='sidenavAccordion' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='sidenavAccordion' tag='A' type='' class='nav-link' aaname='                                                                  Checking (..2839)                             ' check:innerText='Checking (..2839)' /&gt;" Guid="3bd64781-d9cf-4c49-9753-0e4b8482f33f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOUAAAA0CAYAAAB1q/+cAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAL6SURBVHhe7ZkBauNAEAT9hfwoP8vT8rQcy9HQDDO7UiyfR7fVUGSne7QRmAaTPD4+Pn6kx+MBAG9CopQATZAoJUATJEoJ0ASJUgI0QaKUAE2QKCVAEyRKCdAEiVICNEGilABNkCglQBMkSgnQBIlSAjRBopQATZAoJUATJEoJ0ASJUgI0QaKUAE2QKCVAE6TLSvn5+fk02b0AuyBdVsqrlN39W66+L7K6f5UDONJlpfz6+rqE7O4ZUTHz+WpW96/yV3Dkd0Yd2Rla7cRcuKLv8+5Ity5l9s7u+fkVvPr+sxx5n7gjnfX8nOXun5l3Rrrt19cju0d2nuHV95/hmXeJz8Z55YuYx7ny47wr0i1LeXbPFXeE62ju58zzs88uzx2X5rjjrPIZ8dk4r3wR8zhXfpx3RXpbKb+/v9Pn3as4szcUPZ8zbzVnvlTlmoei53PmSe45s+wI2fPRi3MkyzOv8jNvN6TLS5n9qyMiZV52d+TZPff9nHl+jijTz0j045z5fnYqfzDLVsyedf0mH8RMck9+9HZD2uLr68yvlO1GpCwbxCzOme9np/IHs2xG9Zy08hxplg1pznaitxvS5aXM/qKaaXx9zXayuyPP7rnv54xZrkw/I9GPc+b72an8wSzLkLJsUGWVL1a5yPYybzekt5VyKNvJ7s44slvtuO/njFnumZ8rL86Z72en8gezLCJlmajyyherfFDtVP5OSLf8+iqyfff87ET/7Fz5Z+fKz+Yh95wsc686V0gzz89ZniFVWebvhNSqlPEvskeIipnPM98Vsyr3c+b5OZtnvqvacWLuczxnUj7bm+WeOVHVTubvhnRZKeG1rD6fVd6ZO7/7lUiU8iYc+XyO7HTjju/8KiRK2ZD4WcR5xpndd3Ond/0XSJSyKa4sh/8PiVICNEGilABNkCglQBMkSgnQBIlSAjRBopQATZAoJUATJEoJ0ASJUgI0QaKUAE2QKCVAEyRKCdAEiVICNEGilABNkCglQBMkSgnQhL/6+fkDXZNaSb7ZCC0AAAAASUVORK5CYII=" InformativeScreenshot="e30642cd7323157e91528a12c43fa9f4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Arcadia Financial - Account Overview' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick x:Key="Savings (..3842)" ClickType="Single" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f711cba3-d330-4dff-9d5e-c207e70b71dd" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/automationanywherelabs-arcadiabankhome.html" DesignTimeRectangle="8, 337, 225, 48" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Savings (..3842)'" FullSelectorArgument="&lt;webctrl href='automationanywherelabs-arcadiabank_acct3842.html' parentid='sidenavAccordion' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl href='automationanywherelabs-arcadiabank_acct3842.html' parentid='sidenavAccordion' tag='A' type='' class='nav-link' aaname='                                                                  Savings (..3842)                             ' check:innerText='Savings (..3842)' /&gt;" Guid="d2ae2140-1f08-4b6a-96d8-dce60492d2d4" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOUAAAA0CAYAAAB1q/+cAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALXSURBVHhe7dkBaiMxDIXhXCE36s1ytBwtiymPvtXKHifj7WiS/8HHWrJmSAOC0r1cr9eHcrlcABxEYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCYSmBIhSWEihCWbaUX19fu2XvBT6FsmwpVyV79xEqfRZ8BmXZUt5utyWyd/fEZDOvWv2+vWY+T8zMTEs2J0qvr8Q7rzFHOe1SZp83672DmZ8rziiv9JwSe7FuiT2vsU055a+vs3PvYM/PGp+N9Wxf/45kM1kPfcrbL6XHez7jdKd/s77i986jenQ/MjPTE5+N9ajvPT/3ZDNZD33KYUt5v9/T5703MjMbZ7z2c9bzs+qW2PM66ymje6/d6G5L79nYj7V6LV77faY30+vjX8rypcz+qyNSsl727h5Pdh/5nJ+znp+zOuv72Xnfz1uemW082b14enex53U0uh/d4W/KKX99zfSejYl32Xmmzvp+drGveC8zM9OjPNvz86gno7tm6x4/lOVLmf1FNUv79TWbyd49Kz7/TO3nmTrr+9k925et+y3x+VjH/lbiMy3ey8zM4Jty2FK2ZDPZu2f5837u9bz280yd9f3sev3m1bsZ8flYb/Ul3ive65mdg32vZ/z1NZuLvaxu8d5Wf1T3+lndMrr32mV33uudVbe80ovifaxHnpn9dEqppYx/kR2J2ZpR3ZvJ+qN61PdkMx7vZ+KM1/HsUT/Kks25ONOLz2gu9tCnLFtK9O35bvc8e7Qzf/YjKCzlL9j73e59/ghn/MxHU1jKxeL3GOtXrXrPbzjTZ61EYSn/A092D2QUlhIoQmEpgSIUlhIoQmEpgSIUlhIoQmEpgSIUlhIoQmEpgSIUlhIoQmEpgSIUlhIoQmEpgSIUlhIoQmEpgSIUlhIoQmEpgSK+83j8AcutG4g4YVTbAAAAAElFTkSuQmCC" InformativeScreenshot="28ccd32763b312dc64ea027b734ad3d4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Arcadia Financial - Account Overview' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+            </Switch>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,219" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="f711cba3-d330-4dff-9d5e-c207e70b71dd" Text="[var_strValor]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/automationanywherelabs-arcadiabank_acct2839.html" DesignTimeRectangle="1669, 662, 200, 38" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl parentid='layoutSidenav_content' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='layoutSidenav_content' tag='INPUT' type='text' class='dataTable-input' aaname='' /&gt;" Guid="72fff621-8afd-4976-a332-6cd08b9ee80d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMwAAAAqCAYAAAD/P7RtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHJSURBVHhe7d3BSgMxFEZhH9itSx+x6qIgirgSEbp2o0LkF9PeydyE3DGlxTkfXGgnSVc56G4u0m6TGIbpG4JhmMBMgnl/vU3PT/fpbvuQbraPDLPaUQNqQU3YRvbBaEGbdm8v6evzIwFrpgbUgpqw0eyDUU3aAOBATaiNWTAqib8swJSaUBuzYPR/G4C5nzYIBuhDMEAAwQABBAMEEAwQQDBAAMEAAQQDBKwimMur699PwN8cJRhdUDunRjAYZXgw3uU89YUlGIwyNJhzvZgEg1FOFoz25vHU1vN3b03yc7uWP3trQMTQYKTnMpZ7It/1uVzPWs/LtdpeoGV4MJIvqHcpe59Zdr22t/UbS84AnqMEY5WXUt+9KdXWvb1Sey5LzgCeowcjPRfeKvf0nG/97pIzgOfsgvHWe863fnfJGcAzNBjvAvY8s9+9tda6VVvred7zGRj+F0YXzE5Na0+5Zvd4+63yrNTO1Pb0nMU6DQ8G+M8IBgggGCCAYIAAggECCAYIIBgggGCAAIIBAtxgeN0FMFd93QUvVALmqi9U4pV9wIEaUAtqwn1lX45GNWmT/m9jmLWOGlALNhbNJBiGYdpDMAzTPZv0DVGksOUjh3wYAAAAAElFTkSuQmCC" InformativeScreenshot="5a2f4711a419a20bc5d350817e400a91.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Arcadia Financial - Acct 2839' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="4e7752a87248139d19328446a0c6e590.jpg" Selector="&lt;html app='chrome.exe' title='Arcadia Financial - Account Overview' /&gt;" Url="https://developer.automationanywhere.com/challenges/automationanywherelabs-arcadiabank*.html" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Automation Anywhere Labs - Quarter Close Challenge" sap:VirtualizedContainerService.HintSize="950,957" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="2b384127-a876-405c-a971-f463db779e5e" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="916,739" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NCheckState DisplayName="Check App State 'No results'" sap:VirtualizedContainerService.HintSize="854,626" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="2b384127-a876-405c-a971-f463db779e5e" Timeout="5" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="400,405" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,94" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Não existe informações na tabela&quot;]" />
+                  <uix:NSelectItem DisplayName="Select Item 'Status'" sap:VirtualizedContainerService.HintSize="338,158" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="Unverified" ScopeIdentifier="2b384127-a876-405c-a971-f463db779e5e" Version="V3">
+                    <uix:NSelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="3">
+                        <x:String>Status</x:String>
+                        <x:String>Unverified</x:String>
+                        <x:String>Verified</x:String>
+                      </scg:List>
+                    </uix:NSelectItem.Items>
+                    <uix:NSelectItem.Target>
+                      <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/automationanywherelabs-quarterclose.html" DesignTimeRectangle="1292, 556, 208, 38" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Status'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='Status{0}' tag='SELECT' /&gt;&quot;, var_strLinha)]" FuzzySelectorArgument="&lt;webctrl id='Status1' tag='SELECT' type='' class='form-control' aaname='' /&gt;" Guid="b7370fca-beda-401f-a810-37bb419a1531" ImageBase64="" InformativeScreenshot="58c207ba4b8479550ed40be0d803725b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Automation Anywhere Labs - Quarter Close Challenge' /&gt;" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
+                    </uix:NSelectItem.Target>
+                  </uix:NSelectItem>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="400,407" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,94" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Há informações na tabela&quot;]" />
+                  <uix:NSelectItem DisplayName="Select Item 'Status'" sap:VirtualizedContainerService.HintSize="338,158" sap2010:WorkflowViewState.IdRef="NSelectItem_5" Item="Verified" ScopeIdentifier="2b384127-a876-405c-a971-f463db779e5e" Version="V3">
+                    <uix:NSelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="3">
+                        <x:String>Status</x:String>
+                        <x:String>Unverified</x:String>
+                        <x:String>Verified</x:String>
+                      </scg:List>
+                    </uix:NSelectItem.Items>
+                    <uix:NSelectItem.Target>
+                      <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/automationanywherelabs-quarterclose.html" DesignTimeRectangle="1292, 556, 208, 38" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Status'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='Status{0}' tag='SELECT' /&gt;&quot;, var_strLinha)]" FuzzySelectorArgument="&lt;webctrl id='Status1' tag='SELECT' type='' class='form-control' aaname='' /&gt;" Guid="b7370fca-beda-401f-a810-37bb419a1531" ImageBase64="" InformativeScreenshot="58c207ba4b8479550ed40be0d803725b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Automation Anywhere Labs - Quarter Close Challenge' /&gt;" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
+                    </uix:NSelectItem.Target>
+                  </uix:NSelectItem>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/automationanywherelabs-arcadiabank_acct2839.html" DesignTimeRectangle="276, 760, 1610, 39" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'No results'" FullSelectorArgument="&lt;webctrl id='datatablesSimple' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='datatablesSimple' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='dataTables-empty' aaname='No results match your search query' check:innerText='No results match your search query' /&gt;" Guid="b6b2e069-216d-48f6-80fe-786fdd37da1c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAABk4AAAArCAYAAAA+JnS3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQoSURBVHhe7dxRbhQxDAbgXoUHHrj/OTgJhygaFAtjnMzsVm1nOt/Dp078O9nVlhYpFry8/vr5+vLy8rp9Bf7ycwGcid9JfBR/1oA78LsOgDvw9x08Jv/M/BmcfPv+AwAAAAAA4LYMTgAAAAAAAIZ/Bif+2RYAAAAAAHBX//1XXQYnAAAAAADAXRmcAAAAAAAADAYnAAAAAAAAg8EJAAAAAADAYHACAAAAAAAwGJwAAAAAAAAMBicAAAAAAACDwQkAAAAAAMBgcAIAAAAAADAYnAAAAAAAAAwGJwAAAAAAAIPBCQAAAAAAwGBwAgAAAAAAMBicAABwC9++//hjlnX1M7nCe1y5+vv/SD4rAAD4XAYnAADcwnYZPbuQvsJFdX2PZ3nPR9/HFT7js/BZAQDA5zI4AQDgFuIyuruUvsJFdX2PZ3nPR9/HFT7js/BZAQDA5zI4AQDgFuIyevtaL6a7dZazKvLaG+tcW2Wzvtlz1tWjVkVW+1b7Iqt5rq+yWHf1zizL9XxO7a/rWovnbm8Wee2Z1VdZrGdZruevub5Se/Oebn+txd6uvsrDrA4AAFdkcAIAwC3ki916yVuz1brq8lqbPWddfbVvbz2z9dVz6zqeOzXv+me1I3vDqree1a3juavV/s4sr3tX59S+rndWq/WuL9T+bh3PXW3VX7Oad2sAALg6gxMAAG5hddk7e17VwpH+vfNn9dW+vfXMW895dn9XX73W6ty9s57Jq1lPra/O2nvNo68xq4W9/kfzR/Z2awAAuDqDEwAAbqG77I1azrpL4K4WZv1Vl9daXtfa0f6unu2dszo31Gy1XtVnvZstizw/xzqeu9ozeWfrq71Ry1Z5rue+WW1Wn/Vu9vqP5FXXl2tRr/0AAPAVGJwAAHALswvgmq36Oo/2Z4+8bs1Xr/FI9t7rVX3WGyI/8hq59ky+cnRvzfb2zc56pHez1/9MHmZZ1Fd7AQDgqgxOAAC4hdUFcM721lWX7e0Juafu6dbx3K2zR7L3WNda1I/Usshr37bOtWfW8XzE6qys1uu+nEVtVj9SC/Wct66zvfosBwCAKzM4AQDgFlYXwDWLWpdVs3x2RlebZbmn9ne9eT1T87111LJZturPee6rtWrWE2eHVR7rnMXzTN0/y2o+y2pfrtf+rrerZXtnPJLnrPZlqwwAAK7M4AQAADgtl/PP+YjPzfcGAICvyuAEAAA4JRfzz3vvz873BgCAr8zgBAAAOJXtUt7F/Nu81+fnewMAwB0YnAAAAAAAAAwGJwAAAAAAAIPBCQAAAAAAwGBwAgAAAAAAMBicAAAAAAAADAYnAAAAAAAAg8EJAAAAAADAYHACAAAAAAAwGJwAAAAAAAAMBicAAAAAAABDOzgBAAAAAAC4q38GJwAAAAAAABicAAAAAAAADD9ffwPgnzhe4Qgz8AAAAABJRU5ErkJggg==" InformativeScreenshot="f1851be1c0c922dd84b390827edac595.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Arcadia Financial - Acct 2839' /&gt;" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="946df030b947452d84adcc970f0828ab.jpg" Selector="&lt;html app='chrome.exe' title='Automation Anywhere Labs - Quarter Close Challenge' /&gt;" Url="https://developer.automationanywhere.com/challenges/automationanywherelabs-quarterclose.html" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
   </Sequence>
 </Activity>
